@@ -13,4 +13,4 @@ If you don't have a python distribution installed on the computer you want to ru
 ## Dependencies ##
 
 USBTracker is developed with Python 2.7 and has not been tested with other Python versions.
-It uses the great Python module [http://www.williballenthin.com/evtx/](http://www.williballenthin.com/evtx/ "python-evtx") of Willi Ballenthin. So, please don't forget to install it before use USBTracker. 
+It uses the great Python module [Python-evtx](http://www.williballenthin.com/evtx/ "Python-evtx") of Willi Ballenthin. So, please don't forget to install it before use USBTracker. 
