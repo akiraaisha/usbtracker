@@ -21,12 +21,14 @@ It uses the great Python module [Python-evtx](http://www.williballenthin.com/evt
 
 If you want display help, just use the "-h" flag:
 
-```bash
-λ usbtracker.py -h
+```
+PS C:\XXX\XXX\XXX\XXX> .\usbtracker.py -h
 USBTracker v1.0.0
 2015 - Alain Sullam
 
-USBTracker it's a free tool which allow you to extract some USB artifacts from a Windows OS (Vista and later). You must execute USBTracker inside a CMD/Powershell console runnnig with administror privileges to be able to dump some log files artifacts.
+USBTracker it's a free tool which allow you to extract some USB artifacts from a Windows OS (Vista and later).
+You must execute USBTracker inside a CMD/Powershell console runnnig with administror privileges to be able to dump some
+log files artifacts.
 
 usage: usbtracker.py [-h] [-u | -uu] [-nh] [-e] [-x] [-s]
 
