@@ -1,11 +1,13 @@
 import argparse
 import sys
+import os.path
 import _winreg
 import mmap
 import contextlib
 
 from Evtx.Evtx import FileHeader
 from Evtx.Views import evtx_file_xml_view
+from utilities import utils
 
 import xml.etree.ElementTree as ET
 
@@ -50,7 +52,7 @@ def usage():
     print("2015 - Alain Sullam\n")
     print("USBTracker it's a free tool which allow you to extract some USB artifacts from a Windows OS (Vista and "
           "later).")
-    print("You must execute it inside a CMD/Powershell console runnnig with administror privileges to be able to dump some "
+    print("You must execute USBTracker inside a CMD/Powershell console runnnig with administror privileges to be able to dump some "
           "log files artifacts.\n ")
 
 
@@ -115,44 +117,12 @@ def dump_extra_registry(hide_hardwareid):
         pass
 
 
-def dump_sid_users():
-
-    users = []
-    query = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, r'SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList', 0)
-    i = 0
-
-    try:
-        while True:
-            key = _winreg.EnumKey(query, i)
-            query2 = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, r'SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList' + '\\' + key, 0)
-            profile = _winreg.QueryValueEx(query2, 'ProfileImagePath')[0].split('\\')
-            user = [key, profile[len(profile) - 1]]
-            users.append(user)
-            i += 1
-
-    except WindowsError, ex:
-        pass
-
-    return users
-
-
-def find_username_by_sid(sid):
-
-    users = dump_sid_users()
-    username = ''
-    try:
-        for i in range(0, len(users)):
-            if users[i][0] == sid:
-                username = users[i][1]
-    except WindowsError, ex:
-        pass
-
-    return username
-
-
 def dump_event_log(event_file, xml_format):
 
-    users = dump_sid_users()
+    if os.path.isfile(event_file) is False:
+        print("The log file : " + event_file + " is not found.")
+        return
+
     print("USB related event(s) found in the event log :")
     print("=============================================\n")
 
@@ -166,7 +136,7 @@ def dump_event_log(event_file, xml_format):
                     if xml_format:
                         print xml
                     else:
-                        print root[0][7].get('SystemTime') + " EventID : " + root[0][1].text + " Computer : " + root[0][12].text + " User SID : " + root[0][13].get('UserID') + " User : " + find_username_by_sid(root[0][13].get('UserID'))
+                        print root[0][7].get('SystemTime') + " EventID : " + root[0][1].text + " Computer : " + root[0][12].text + " User SID : " + root[0][13].get('UserID') + " User : " + utils.find_username_by_sid(root[0][13].get('UserID'))
                         print root[1][0][1].text + "\n"
 
 
