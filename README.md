@@ -19,7 +19,7 @@ It uses the great Python module [Python-evtx](http://www.williballenthin.com/evt
 
 ## Help ##
 
-If you want display help, just use the "-h" flag:
+If you want display help, just use the "-h" flag :
 
 ```
 PS C:\XXX\XXX\XXX\XXX> .\usbtracker.py -h
@@ -48,7 +48,7 @@ optional arguments:
 
 ## List know USB storage devices ##
 
-If you want to list all USB storage devices known by Windows, use the "-u" flag to get a simple list or the "-uu" flag if you want to get a detailed list :
+If you want to list all USB storage devices known by Windows, use the "-u" flag to get a simple list :
 
 ```
 PS C:\XXX\XXX\XXX\XXX> .\usbtracker.py -u
@@ -70,6 +70,8 @@ Disk&Ven_WD&Prod_Elements_10B8&Rev_1012
 Disk&Ven_WD&Prod_My_Book_1140&Rev_1012
 Other&Ven_WD&Prod_SES_Device&Rev_1012
 ```
+
+or the "-uu" flag if you want to get a detailed list :
 
 ```
 PS C:\XXX\XXX\XXX\XXX> .\usbtracker.py -uu
