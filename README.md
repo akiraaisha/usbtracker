@@ -1,12 +1,14 @@
 # USBTracker #
 
+!!!! This is an alpha release currently in development !!!! A lot of features are not completely implemented or not implemented at all.
+
 USBTracker is a quick & dirty coded incident response and forensics Python script to dump USB related information and artifacts from a Windows OS (vista and later). 
 
 ## Special recommandations ##
 
 USBTracker read some protected log files and needs to be run with administrator permissions. The most simple way to run USBTracker is to launch a CMD or Powershell console with a right click **"run as administrator"**, then execute the script inside it.
 
-## "Compiled" binary version ##
+## Executable version ##
 
 If you don't have a python distribution installed on the computer you want to analyze with USBTracker, you can also download an *.exe "compiled" version with *PyInstaller* of the script from the repository.
 
